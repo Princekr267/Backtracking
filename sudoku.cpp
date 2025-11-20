@@ -3,8 +3,28 @@
 using namespace std;
 void printSudoku(int sudoku[9][9]){
     for(int i=0; i<9; i++){
-        for(int j=0; j<9; j++){
+        int border=7, j=0, k=0;
+        if(i==3 || i==6){
+            cout<<"";
+            while(border!=0){
+                if(border==1){
+                    cout<<"|-";
+                    border=7;
+                } else{
+                    cout<<"-";
+                    border--;
+                }
+                if(k==19) break;
+                k++;
+            }
+            cout<<endl;
+        }
+        while(j<9){
             cout<<sudoku[i][j]<<" ";
+            if(j==2 || j==5){
+                cout<<"| ";
+            }
+            j++;
         }
         cout<<endl;
     }
@@ -66,7 +86,7 @@ int main(){
     //     }
     //     sudoku.push_back(row);
     // }
-   // printSudoku(sudoku);
+   printSudoku(sudoku);
    sudokuSolver(sudoku, 0, 0);
     return 0;
 }
